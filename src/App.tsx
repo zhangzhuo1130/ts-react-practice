@@ -1,24 +1,27 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React ,{useState}from 'react';
+import './assets/css/App.css';
 
-function App() {
+// type TitleProps={
+//   name:string
+// }
+interface TitleProps{
+  name:string
+}
+interface TitleProps{
+  desc?:string
+}
+
+const Title:React.FC<TitleProps>=({name,desc})=>{
+  // if(desc===undefined) return
+  return <p>{name}</p>
+}
+
+const App:React.FC=()=> {
+  // 用泛型的写法<number|string>将当前 state可传三种类型的内容
+  const [title,setTitle] = useState<number|string>();
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Title name={'Title'}/>
     </div>
   );
 }
